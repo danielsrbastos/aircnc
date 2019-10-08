@@ -4,14 +4,18 @@ import api from '../../services/api';
 
 import './styles.css';  
 
-export default function Dashboard() {
+export default function Dashboard({ history }) {
     const [ spots, setSpots ] = useState([]);
 
     // Método que só executa uma vez, quando o componente é criado. Ele só executa uma vez pois não passamos nenhuma variável no array de dependências, caso passassemos alguma variável, o método seria executado sempre que o valor dessa variável fosse alterado
     useEffect(() => {
+        const user_id = localStorage.getItem('user');
+
+        if (!user_id) 
+            history.push('/');
+
         // Colocando a função toda entre parentes e acrescentando '();' no final a função é executada automaticamente. Mesma coisa que não colocar '();' e chamar 'loadSpots();' após a função
         (async function loadSpots() {
-            const user_id = localStorage.getItem('user');
             const response = await api.get('/dashboard', {
                 // Passamos o ID do usuário logado no header da requisição
                 headers: {
@@ -20,8 +24,9 @@ export default function Dashboard() {
             })
 
             setSpots(response.data);
+            console.log(response.data);
         })();
-    }, []); 
+    }, [ history ]); 
 
     return (
         <>

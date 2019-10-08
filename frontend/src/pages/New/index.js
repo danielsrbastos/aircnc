@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import api from '../../services/api';
 
 import camera from '../../assets/camera.svg';
@@ -10,6 +10,13 @@ export default function New({ history }) {
     const [ company, setCompany ] = useState("");
     const [ techs, setTechs ] = useState("");
     const [ price, setPrice ] = useState("");
+
+    useEffect(() => {
+        const user_id = localStorage.getItem('user');
+
+        if (!user_id) 
+            history.push('/');
+    }, [ history ]);
 
     // É executado durante a renderização do componente (lembre-se que o componente é renderizado sempre que algum valor do state é alterado). É parecido com o useEffect, recebe os mesmos parâmetros e tem a mesma ideia
     const preview = useMemo(() => {
