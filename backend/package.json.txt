@@ -1,0 +1,24 @@
+=> Arquivo de configurações do projeto
+    Ficaram referenciadas as dependências que instalarmos no projeto (npm, yarn, etc)
+
+=> 1º dependência: yarn add express
+    Adiciona a dependência "express", que utilizaremos no projeto
+    O express é uma biblioteca que facilita a criação da nossa aplicação
+    O diretório "node_modules" armazena as nossas dependências
+
+=> 2º dependência: yarn add nodemon -D
+    Adiciona a dependência "nodemon", que utilizaremos no projeto
+    O nodemon é uma biblioteca que salva as alterações no projeto em
+    tempo real, sem a necessidade de ficar reiniciando o servidor
+    A flag -D informa ao projeto que a dependência só sera utilizada
+    durante o desenvolvimento do mesmo
+    No objeto package.json criamos uma chave scripts, dentro dela
+    criamos um objeto com a chave dev, que será utilizada quando executarmos
+    o comando pelo yarn ('yarn dev'). Essa chave dev contém o comando nodemon que
+    faz todo o trabalho de alteração em tempo real.
+
+=> 3º dependência: yarn add mongoose
+    Permite trabalhar com facilidade usando o mongodb
+
+=> 3º dependência: yarn add multer
+    Permite ler multipart [utilizado para passar a imagem do spot]
